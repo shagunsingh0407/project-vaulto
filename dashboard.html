@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vaulto — Dashboard Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="brand"><span class="mark"><img src="assets/logo.svg" alt="logo" style="width:20px;vertical-align:middle"></span>Vaulto</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
+      <a href="pricing.html" class="btn-accent">Get Started</a>
+    </nav>
+
+    <div class="demo-banner">
+      <div class="small">Demo Mode — No real accounts are connected. Data is saved in your browser (localStorage).</div>
+      <div><span class="badge">Interactive Demo</span></div>
+    </div>
+
+    <main class="grid-3">
+      <section>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div>
+            <div class="small">Total Balance</div>
+            <div style="font-size:20px;font-weight:700">₹ <span id="totalBalance">0</span></div>
+            <div class="small">Across your demo vaults</div>
+          </div>
+          <div>
+            <button id="newVaultBtn" class="btn-accent">+ New Vault</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px">
+          <h4 style="margin:0 0 8px">Vaults</h4>
+          <div id="vaultList"></div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h4 style="margin:0 0 8px">Vault Items</h4>
+          <div id="itemsList"></div>
+        </div>
+      </section>
+
+      <aside style="padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px">
+        <h4 style="margin-top:0">Quick Actions</h4>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+          <button id="newItemBtn" class="btn-ghost">+ New Item</button>
+          <button class="btn-ghost" onclick="localStorage.removeItem('vaulto_demo_v3');location.reload()">Reset Demo</button>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="small">Security</div>
+          <div class="small">Demo only — AES-256 (placeholder)</div>
+          <div class="small" style="margin-top:6px">Last backup: —</div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- modal -->
+    <div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:18px">
+      <div style="width:100%;max-width:680px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px">
+        <h3 style="margin-top:0">Create new item</h3>
+        <form id="itemForm" style="display:flex;flex-direction:column;gap:10px">
+          <input id="itmTitle" placeholder="Title" style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06)" />
+          <textarea id="itmContent" rows="4" placeholder="Content or URL" style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06)"></textarea>
+          <div style="display:flex;gap:8px;justify-content:flex-end">
+            <button type="button" id="cancel" class="btn-ghost">Cancel</button>
+            <button type="submit" class="btn-accent">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer style="margin-top:28px">
+      © 2025 Vaulto Inc.
+    </footer>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
